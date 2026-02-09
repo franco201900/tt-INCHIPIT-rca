@@ -10,7 +10,7 @@ module rca
     );
 
     // Internals
-    logic [3:0] carry;
+    logic [2:0] carry;
     assign carry[o]=cin;
     genvar i;
     generate;
