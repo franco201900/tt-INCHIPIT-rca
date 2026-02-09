@@ -15,15 +15,7 @@ module rca
     genvar i;
     generate;
         for(i=0; i<3; i=i+1){ 
-            begin: gen_rca 
-                if (i == 0) begin: gen_0
-                fa_module u(
-                    .a(a[i]),
-                    .b(b[i]),
-                    .cin(cin),
-                    .y(sum[i]),
-                    .cout(carry[i])
-                );
+            begin: fa_module_u 
                 }
             end else begin: gen_gt0
             
