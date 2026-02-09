@@ -10,38 +10,20 @@ module rca
     );
 
     // Internals
-    logic [2:0] carry;
+    logic [3:0] carry;
 
     genvar i;
     generate;
-        for(i=0; i<3; i=i+1){ 
-            begin: fa_module_u 
-                }
-            end else begin: gen_gt0
-            
-
-            end
+        for(i=0; i<3; i=i+1) 
+            begin: fa_gen fa_module_u fa_inst(
+                .A(a[i]),
+                .B(b[i]),
+                .Cin(carry[i]),
+                .S(sum[i]),
+                .Cout(carry[i+1]),
+            );
         end
     endgenerate
 
-    assign cout = carry[2];
-
+    assign cout = carry[3];
 endmodule: rca
-module fa_module_u
-    (
-        input logic A,
-        input logic B,
-        input logic Cin,
-        output logic S,
-        output logic Cout
-    );
-
-    logic i0, i1, i2;
-
-    xor u0(i0, A, B);
-
-    and u2(i1, A, B);
-
-    or u4(Cout, i1, i2);
-
-endmodule: fa_module
